@@ -37,6 +37,8 @@ public class ServersNPC extends JavaPlugin {
 
     private static final int PLUGIN_ID = 8054;
 
+    public static GTWShopsIntegration GTW_SHOPS_INTEGRATION;
+
     static {
         ImmutableList<File> files = ImmutableList.of(PLUGIN_FOLDER, PATH_FOLDER);
       for (File file : files) {
@@ -69,6 +71,7 @@ public class ServersNPC extends JavaPlugin {
         new NpcRefreshSkinTask().runTaskTimerAsynchronously(this, 0L, 20L);
         new PlayerListener(this);
         new InventoryListener(this);
+        GTW_SHOPS_INTEGRATION = new GTWShopsIntegration(this);
     }
 
     public void onDisable() {
