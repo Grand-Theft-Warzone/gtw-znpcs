@@ -55,6 +55,8 @@ public class ServersNPC extends JavaPlugin {
 
   public static BungeeUtils BUNGEE_UTILS;
 
+  public static GTWShopsIntegration GTW_SHOPS_INTEGRATION;
+
   private ZNPConfigSaveTask configSaveTask;
 
   @Override
@@ -92,6 +94,8 @@ public class ServersNPC extends JavaPlugin {
 
     new PlayerListener(this);
     new InventoryListener(this);
+
+    GTW_SHOPS_INTEGRATION = new GTWShopsIntegration(this);
   }
 
   @Override

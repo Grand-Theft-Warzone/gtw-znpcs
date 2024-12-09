@@ -66,6 +66,12 @@ public class NPCAction {
   }
   
   enum ActionType {
+    SHOP {
+      @Override
+      public void run(ZUser param1ZUser, String param1String) {
+        ServersNPC.GTW_SHOPS_INTEGRATION.openShop(param1ZUser.toPlayer(), param1String);
+      }
+    },
     CMD {
       public void run(ZUser user, String actionValue) {
         user.toPlayer().performCommand(actionValue);
