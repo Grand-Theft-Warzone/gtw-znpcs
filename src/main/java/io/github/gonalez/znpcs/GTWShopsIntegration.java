@@ -32,4 +32,24 @@ public class GTWShopsIntegration {
         }
 
     }
+
+    public void openSell(Player player) {
+        if (!plugin.getServer().getPluginManager().isPluginEnabled("GTWHouses")) {
+            plugin.getLogger().warning("GTWHouses is not enabled, cannot open sell");
+            return;
+        }
+
+        Plugin gtwhouses = plugin.getServer().getPluginManager().getPlugin("GTWHouses");
+        if (gtwhouses == null) {
+            plugin.getLogger().warning("GTWHouses is not enabled, cannot open sell");
+            return;
+        }
+
+        Class<?> gtwhousesClass = gtwhouses.getClass();
+        try {
+            gtwhousesClass.getMethod("openSell", Player.class).invoke(gtwhouses, player);
+        } catch (Exception e) {
+            plugin.getLogger().warning("Failed to open sell shop: " + e.getMessage());
+        }
+    }
 }
